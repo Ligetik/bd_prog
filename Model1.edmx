@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище sqlModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="3-НДФЛ">
+          <Key>
+            <PropertyRef Name="Id Клиента" />
+          </Key>
+          <Property Name="Id Клиента" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Декларация" Type="int" />
+          <Property Name="Дата" Type="date" />
+        </EntityType>
+        <EntityType Name="6-НДФЛ">
+          <Key>
+            <PropertyRef Name="Id 6-НДФЛ" />
+          </Key>
+          <Property Name="Id 6-НДФЛ" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id Клиента" />
+          </Key>
+          <Property Name="Id Клиента" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="pass" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Декларация">
+          <Key>
+            <PropertyRef Name="Id Декларация" />
+          </Key>
+          <Property Name="Id Декларация" Type="int" Nullable="false" />
+          <Property Name="Название" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ЕНВД">
+          <Key>
+            <PropertyRef Name="Id ЕНВД" />
+          </Key>
+          <Property Name="Id ЕНВД" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Налоги">
+          <Key>
+            <PropertyRef Name="Id Налоги" />
+          </Key>
+          <Property Name="Id Налоги" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="Нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="НДС">
+          <Key>
+            <PropertyRef Name="Id НДС" />
+          </Key>
+          <Property Name="Id НДС" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Организация">
+          <Key>
+            <PropertyRef Name="Id Организация" />
+          </Key>
+          <Property Name="Id Организация" Type="int" Nullable="false" />
+          <Property Name="Название организации" Type="varchar" MaxLength="50" />
+          <Property Name="id Налоги" Type="int" />
+          <Property Name="id СЗВ-М" Type="int" />
+          <Property Name="id ФСС" Type="int" />
+          <Property Name="id ЕНВД" Type="int" />
+          <Property Name="id НДС" Type="int" />
+          <Property Name="id Прибыль" Type="int" />
+          <Property Name="id РСВ" Type="int" />
+          <Property Name="id НДФЛ" Type="int" />
+          <Property Name="Заметка" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Прибыль">
+          <Key>
+            <PropertyRef Name="Id Прибыль" />
+          </Key>
+          <Property Name="Id Прибыль" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="РСВ">
+          <Key>
+            <PropertyRef Name="Id РСВ" />
+          </Key>
+          <Property Name="Id РСВ" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ФСС">
+          <Key>
+            <PropertyRef Name="Id ФСС" />
+          </Key>
+          <Property Name="Id ФСС" Type="int" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="nchar" MaxLength="10" />
+          <Property Name="нужно сдать" Type="nchar" MaxLength="10" />
+          <Property Name="СДАНО" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="Хранилище sqlModelContainer">
+          <EntitySet Name="3-НДФЛ" EntityType="Self.3-НДФЛ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="6-НДФЛ" EntityType="Self.6-НДФЛ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Декларация" EntityType="Self.Декларация" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ЕНВД" EntityType="Self.ЕНВД" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Налоги" EntityType="Self.Налоги" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="НДС" EntityType="Self.НДС" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Организация" EntityType="Self.Организация" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Прибыль" EntityType="Self.Прибыль" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="РСВ" EntityType="Self.РСВ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ФСС" EntityType="Self.ФСС" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sqlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C3_НДФЛ">
+          <Key>
+            <PropertyRef Name="Id_Клиента" />
+          </Key>
+          <Property Name="Id_Клиента" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Декларация" Type="Int32" />
+          <Property Name="Дата" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="C6_НДФЛ">
+          <Key>
+            <PropertyRef Name="Id_6_НДФЛ" />
+          </Key>
+          <Property Name="Id_6_НДФЛ" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id_Клиента" />
+          </Key>
+          <Property Name="Id_Клиента" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Декларация">
+          <Key>
+            <PropertyRef Name="Id_Декларация" />
+          </Key>
+          <Property Name="Id_Декларация" Type="Int32" Nullable="false" />
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ЕНВД">
+          <Key>
+            <PropertyRef Name="Id_ЕНВД" />
+          </Key>
+          <Property Name="Id_ЕНВД" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Налоги">
+          <Key>
+            <PropertyRef Name="Id_Налоги" />
+          </Key>
+          <Property Name="Id_Налоги" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="НДС">
+          <Key>
+            <PropertyRef Name="Id_НДС" />
+          </Key>
+          <Property Name="Id_НДС" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Организация">
+          <Key>
+            <PropertyRef Name="Id_Организация" />
+          </Key>
+          <Property Name="Id_Организация" Type="Int32" Nullable="false" />
+          <Property Name="Название_организации" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Налоги" Type="Int32" />
+          <Property Name="id_СЗВ_М" Type="Int32" />
+          <Property Name="id_ФСС" Type="Int32" />
+          <Property Name="id_ЕНВД" Type="Int32" />
+          <Property Name="id_НДС" Type="Int32" />
+          <Property Name="id_Прибыль" Type="Int32" />
+          <Property Name="id_РСВ" Type="Int32" />
+          <Property Name="id_НДФЛ" Type="Int32" />
+          <Property Name="Заметка" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Прибыль">
+          <Key>
+            <PropertyRef Name="Id_Прибыль" />
+          </Key>
+          <Property Name="Id_Прибыль" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="РСВ">
+          <Key>
+            <PropertyRef Name="Id_РСВ" />
+          </Key>
+          <Property Name="Id_РСВ" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ФСС">
+          <Key>
+            <PropertyRef Name="Id_ФСС" />
+          </Key>
+          <Property Name="Id_ФСС" Type="Int32" Nullable="false" />
+          <Property Name="ПОДГОТОВЛЕНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="нужно_сдать" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="СДАНО" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="sqlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C3_НДФЛ" EntityType="Self.C3_НДФЛ" />
+          <EntitySet Name="C6_НДФЛ" EntityType="Self.C6_НДФЛ" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="Декларация" EntityType="Self.Декларация" />
+          <EntitySet Name="ЕНВД" EntityType="Self.ЕНВД" />
+          <EntitySet Name="Налоги" EntityType="Self.Налоги" />
+          <EntitySet Name="НДС" EntityType="Self.НДС" />
+          <EntitySet Name="Организация" EntityType="Self.Организация" />
+          <EntitySet Name="Прибыль" EntityType="Self.Прибыль" />
+          <EntitySet Name="РСВ" EntityType="Self.РСВ" />
+          <EntitySet Name="ФСС" EntityType="Self.ФСС" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище sqlModelContainer" CdmEntityContainer="sqlEntities">
+          <EntitySetMapping Name="C3_НДФЛ">
+            <EntityTypeMapping TypeName="sqlModel.C3_НДФЛ">
+              <MappingFragment StoreEntitySet="3-НДФЛ">
+                <ScalarProperty Name="Id_Клиента" ColumnName="Id Клиента" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Декларация" ColumnName="Декларация" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C6_НДФЛ">
+            <EntityTypeMapping TypeName="sqlModel.C6_НДФЛ">
+              <MappingFragment StoreEntitySet="6-НДФЛ">
+                <ScalarProperty Name="Id_6_НДФЛ" ColumnName="Id 6-НДФЛ" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="sqlModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id_Клиента" ColumnName="Id Клиента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="sqlModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Декларация">
+            <EntityTypeMapping TypeName="sqlModel.Декларация">
+              <MappingFragment StoreEntitySet="Декларация">
+                <ScalarProperty Name="Id_Декларация" ColumnName="Id Декларация" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ЕНВД">
+            <EntityTypeMapping TypeName="sqlModel.ЕНВД">
+              <MappingFragment StoreEntitySet="ЕНВД">
+                <ScalarProperty Name="Id_ЕНВД" ColumnName="Id ЕНВД" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Налоги">
+            <EntityTypeMapping TypeName="sqlModel.Налоги">
+              <MappingFragment StoreEntitySet="Налоги">
+                <ScalarProperty Name="Id_Налоги" ColumnName="Id Налоги" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="Нужно_сдать" ColumnName="Нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="НДС">
+            <EntityTypeMapping TypeName="sqlModel.НДС">
+              <MappingFragment StoreEntitySet="НДС">
+                <ScalarProperty Name="Id_НДС" ColumnName="Id НДС" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Организация">
+            <EntityTypeMapping TypeName="sqlModel.Организация">
+              <MappingFragment StoreEntitySet="Организация">
+                <ScalarProperty Name="Id_Организация" ColumnName="Id Организация" />
+                <ScalarProperty Name="Название_организации" ColumnName="Название организации" />
+                <ScalarProperty Name="id_Налоги" ColumnName="id Налоги" />
+                <ScalarProperty Name="id_СЗВ_М" ColumnName="id СЗВ-М" />
+                <ScalarProperty Name="id_ФСС" ColumnName="id ФСС" />
+                <ScalarProperty Name="id_ЕНВД" ColumnName="id ЕНВД" />
+                <ScalarProperty Name="id_НДС" ColumnName="id НДС" />
+                <ScalarProperty Name="id_Прибыль" ColumnName="id Прибыль" />
+                <ScalarProperty Name="id_РСВ" ColumnName="id РСВ" />
+                <ScalarProperty Name="id_НДФЛ" ColumnName="id НДФЛ" />
+                <ScalarProperty Name="Заметка" ColumnName="Заметка" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Прибыль">
+            <EntityTypeMapping TypeName="sqlModel.Прибыль">
+              <MappingFragment StoreEntitySet="Прибыль">
+                <ScalarProperty Name="Id_Прибыль" ColumnName="Id Прибыль" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РСВ">
+            <EntityTypeMapping TypeName="sqlModel.РСВ">
+              <MappingFragment StoreEntitySet="РСВ">
+                <ScalarProperty Name="Id_РСВ" ColumnName="Id РСВ" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ФСС">
+            <EntityTypeMapping TypeName="sqlModel.ФСС">
+              <MappingFragment StoreEntitySet="ФСС">
+                <ScalarProperty Name="Id_ФСС" ColumnName="Id ФСС" />
+                <ScalarProperty Name="ПОДГОТОВЛЕНО" ColumnName="ПОДГОТОВЛЕНО" />
+                <ScalarProperty Name="нужно_сдать" ColumnName="нужно сдать" />
+                <ScalarProperty Name="СДАНО" ColumnName="СДАНО" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
